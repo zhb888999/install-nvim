@@ -1,4 +1,9 @@
 {
+    "explorer.icon.enableNerdfont": true,
+    "explorer.keyMappings": {
+        "/": "actionMenu",
+        "<tab>": "quit"
+    },
     "coc.preferences.extensionUpdateCheck": "daily",
     "suggest.noselect": true,
     "suggest.enablePreselect": false,
@@ -45,8 +50,5 @@
         "json",
         "py",
         "go"
-    ],
-    "coc-actions.hideCursor": true,
-    "coc-actions.showActionKind": true,
-    "coc-actions.useCursorLine": false
+    ]
 }

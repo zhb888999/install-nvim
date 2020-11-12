@@ -1,7 +1,7 @@
 #!/bin/sh
 
-# sudo pacman -S neovim git go nodejs npm ccls ttf-nerd-fonts-symbols python-jedi python-neovim gopls xsel
-# sudo npm -g install instant-markdown-d
+sudo pacman -S neovim git go nodejs npm ccls ttf-nerd-fonts-symbols python-jedi python-neovim gopls xsel
+sudo npm -g install instant-markdown-d
 # mkdir -p ~/.config/nvim/autoload
 
 # install vim-plug
@@ -17,7 +17,7 @@
 # rm -rf fonts
 
 cp init.vim ~/.config/nvim
-cp coc-config ~/.config/nvim
+cp coc-config.json ~/.config/nvim
 nvim -c PlugInstall
 
 # install coc-ccls

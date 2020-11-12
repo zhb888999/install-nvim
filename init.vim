@@ -17,6 +17,7 @@ nnoremap <silent> <C-q> :q<CR>
 nnoremap <C-s> :w<CR>
 nnoremap <silent> <leader>y "+y
 vnoremap <silent> <leader>y "+y
+nnoremap <silent> <TAB> <C-w>w
 
 inoremap <silent> <C-a> <ESC>I
 inoremap <silent> <C-d> <ESC>lxi
@@ -28,22 +29,24 @@ inoremap <silent> <C-v> <ESC>"+pa
 " vim-plug "
 """"""""""""
 call plug#begin('~/.config/nvim/plugged')
-" Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle'}
-" Plug 'majutsushi/tagbar', { 'on': 'TagbarOpenAutoClose'}
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'mhinz/vim-startify'
-Plug 'voldikss/vim-floaterm'
-Plug 'preservim/nerdcommenter'
-" Plug 'Yggdroot/indentLine'
-Plug 'vim-airline/vim-airline'
-" Plug 'vim-scripts/taglist-plus'
-Plug 'suan/vim-instant-markdown'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}         "代码补全
+Plug 'mhinz/vim-startify'                               "开始界面
+Plug 'voldikss/vim-floaterm'                            "浮动窗口终端
+Plug 'preservim/nerdcommenter'                          "代码补全
+Plug 'Yggdroot/indentLine'                              "代码缩进标识
+Plug 'vim-airline/vim-airline'                          "状态栏美化
+Plug 'suan/vim-instant-markdown'                        "markdown文件浏览器预览
 call plug#end()
 
 """"""""""""
 " coc-nvim "
 """"""""""""
-let g:coc_global_extensions = ['coc-python', 'coc-json', 'coc-go', 'coc-vimlsp', 'coc-ccls', 'coc-pairs', 'coc-snippets', 'coc-git', 'coc-explorer', 'coc-marketplace', 'coc-sh', 'coc-tsserver', 'coc-html', 'coc-css']
+let g:coc_global_extensions = ['coc-python', 'coc-json', 'coc-go', 
+                            \ 'coc-vimlsp', 'coc-ccls', 'coc-pairs', 
+                            \ 'coc-snippets', 'coc-git', 'coc-explorer',
+                            \ 'coc-marketplace', 'coc-sh', 'coc-tsserver',
+                            \ 'coc-html', 'coc-css', 'coc-floaterm',
+                            \ 'coc-translator']
 set hidden
 set updatetime=100
 set shortmess+=c
@@ -132,19 +135,19 @@ omap ic <Plug>(coc-classobj-i)
 xmap ac <Plug>(coc-classobj-a)
 omap ac <Plug>(coc-classobj-a)
 
-" Remap <C-f> and <C-b> for scroll float windows/popups.
-" Note coc#float#scroll works on neovim >= 0.4.0 or vim >= 8.2.0750
-nnoremap <nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
-nnoremap <nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
-inoremap <nowait><expr> <C-f> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
-inoremap <nowait><expr> <C-b> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
+"" Remap <C-f> and <C-b> for scroll float windows/popups.
+"" Note coc#float#scroll works on neovim >= 0.4.0 or vim >= 8.2.0750
+"nnoremap <nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+"nnoremap <nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+"inoremap <nowait><expr> <C-f> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
+"inoremap <nowait><expr> <C-b> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
 
-" NeoVim-only mapping for visual mode scroll
-" Useful on signatureHelp after jump placeholder of snippet expansion
-if has('nvim')
-  vnoremap <nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#nvim_scroll(1, 1) : "\<C-f>"
-  vnoremap <nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#nvim_scroll(0, 1) : "\<C-b>"
-endif
+"" NeoVim-only mapping for visual mode scroll
+"" Useful on signatureHelp after jump placeholder of snippet expansion
+"if has('nvim')
+  "vnoremap <nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#nvim_scroll(1, 1) : "\<C-f>"
+  "vnoremap <nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#nvim_scroll(0, 1) : "\<C-b>"
+"endif
 
 " Use CTRL-S for selections ranges.
 " Requires 'textDocument/selectionRange' support of language server.
@@ -183,15 +186,25 @@ nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 
-" popup
-nmap <Leader>t <Plug>(coc-translator-p)
-vmap <Leader>t <Plug>(coc-translator-pv)
-
-" Remap for do codeAction of selected region
-function! s:cocActionsOpenFromSelected(type) abort
-  execute 'CocCommand actions.open ' . a:type
-endfunction
-xmap <silent> <leader>a :<C-u>execute 'CocCommand actions.open ' . visualmode()<CR>
-nmap <silent> <leader>a :<C-u>set operatorfunc=<SID>cocActionsOpenFromSelected<CR>g@
-
+""""""""""""""""
+" coc-explorer "
+""""""""""""""""
 nnoremap <leader>e :CocCommand explorer<CR>
+
+""""""""""""""""""
+" coc-translator "
+""""""""""""""""""
+nmap <Leader>t <Plug>(coc-translator-e)
+vmap <Leader>t <Plug>(coc-translator-ev)
+
+"""""""""""""""""""""""""
+" voldikss/vim-floaterm "
+"""""""""""""""""""""""""
+nnoremap <silent> <leader>w :FloatermNew<CR>
+tnoremap <silent> [w <C-\><C-n>:FloatermNew<CR>
+nnoremap <silent> <leader><TAB> :FloatermToggle<CR>
+tnoremap <silent> [<TAB> <C-\><C-n>:FloatermToggle<CR>
+tnoremap <silent> ]] <C-\><C-n>:FloatermNext<CR>
+tnoremap <silent> [[ <C-\><C-n>:FloatermPrev<CR>
+
+
