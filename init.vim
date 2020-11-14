@@ -36,6 +36,9 @@ Plug 'preservim/nerdcommenter'                          "代码补全
 Plug 'Yggdroot/indentLine'                              "代码缩进标识
 Plug 'vim-airline/vim-airline'                          "状态栏美化
 Plug 'suan/vim-instant-markdown'                        "markdown文件浏览器预览
+Plug 'gcmt/wildfire.vim'                                "回车选取代码块
+Plug 'tpope/vim-surround'                               "包裹更改
+Plug 'junegunn/fzf.vim'                                 "fzf
 call plug#end()
 
 """"""""""""
@@ -204,4 +207,13 @@ tnoremap <silent> [<TAB> <C-\><C-n>:FloatermToggle<CR>
 tnoremap <silent> ]] <C-\><C-n>:FloatermNext<CR>
 tnoremap <silent> [[ <C-\><C-n>:FloatermPrev<CR>
 
-
+"""""""""""""""""""""
+" gcmt/wildfire.vim "
+"""""""""""""""""""""
+let g:wildfire_objects = {"*" : ["i'", 'i"', "i)", "i]", "i}", "i>", "ip", "it", "iw",
+                               \ "a'", 'a"', "a)", "a]", "a}", "a>", "ap", "at"]}
+"""""""
+" fzf "
+"""""""
+nnoremap \f :Files ~<CR>
+nnoremap \c :Colors<CR>
