@@ -45,11 +45,11 @@ call plug#end()
 " coc-nvim "
 """"""""""""
 let g:coc_global_extensions = ['coc-python', 'coc-json', 'coc-go', 
-                            \ 'coc-vimlsp', 'coc-ccls', 'coc-pairs', 
-                            \ 'coc-snippets', 'coc-git', 'coc-explorer',
-                            \ 'coc-marketplace', 'coc-sh', 'coc-tsserver',
-                            \ 'coc-html', 'coc-css', 'coc-floaterm',
-                            \ 'coc-translator']
+                             \ 'coc-vimlsp', 'coc-ccls', 'coc-pairs', 
+                             \ 'coc-snippets', 'coc-git', 'coc-explorer',
+                             \ 'coc-marketplace', 'coc-sh', 'coc-tsserver',
+                             \ 'coc-html', 'coc-css', 'coc-floaterm',
+                             \ 'coc-translator']
 set hidden
 set updatetime=100
 set shortmess+=c

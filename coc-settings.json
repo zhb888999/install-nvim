@@ -1,8 +1,8 @@
 {
     "explorer.icon.enableNerdfont": true,
-    "explorer.keyMappings": {
-        "/": "actionMenu",
-        "<tab>": "quit"
+    "explorer.keyMappings.global": {
+        "<tab>": false,
+        "\\": "actionMenu"
     },
     "coc.preferences.extensionUpdateCheck": "daily",
     "suggest.noselect": true,
