@@ -200,9 +200,9 @@ vmap <Leader>t <Plug>(coc-translator-ev)
 """""""""""""""""""""""""
 " voldikss/vim-floaterm "
 """""""""""""""""""""""""
-nnoremap <silent> <leader>w :FloatermNew<CR>
+nnoremap <silent> [w :FloatermNew<CR>
 tnoremap <silent> [w <C-\><C-n>:FloatermNew<CR>
-nnoremap <silent> <leader><TAB> :FloatermToggle<CR>
+nnoremap <silent> [<TAB> :FloatermToggle<CR>
 tnoremap <silent> [<TAB> <C-\><C-n>:FloatermToggle<CR>
 tnoremap <silent> ]] <C-\><C-n>:FloatermNext<CR>
 tnoremap <silent> [[ <C-\><C-n>:FloatermPrev<CR>
