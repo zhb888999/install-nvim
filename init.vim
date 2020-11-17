@@ -207,6 +207,7 @@ tnoremap <silent> [<TAB> <C-\><C-n>:FloatermToggle<CR>
 tnoremap <silent> ]] <C-\><C-n>:FloatermNext<CR>
 tnoremap <silent> [[ <C-\><C-n>:FloatermPrev<CR>
 
+command! Rg FloatermNew ranger
 command! Lg FloatermNew lazygit
 
 command! RunPython FloatermNew python %
