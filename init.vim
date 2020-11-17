@@ -220,6 +220,7 @@ command! RunBash FloatermNew bash %
 map <silent> <F5> :call CompileRun()<CR>
 noremap <silent> <Leader>r :call CompileRun()<CR>
 func! CompileRun()
+    exec "w"
     if &filetype == 'c'
         exec "RunC"
     elseif &filetype == 'cpp'
