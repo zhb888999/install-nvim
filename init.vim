@@ -207,6 +207,31 @@ tnoremap <silent> [<TAB> <C-\><C-n>:FloatermToggle<CR>
 tnoremap <silent> ]] <C-\><C-n>:FloatermNext<CR>
 tnoremap <silent> [[ <C-\><C-n>:FloatermPrev<CR>
 
+command! Lg FloatermNew lazygit
+
+command! RunPython FloatermNew python %
+command! RunGo FloatermNew go run %
+command! RunC FloatermNew gcc %;./a.out;rm a.out
+command! RunCPP FloatermNew g++ %;./a.out;rm a.out
+command! RunBash FloatermNew bash %
+
+
+map <silent> <F5> :call CompileRun()<CR>
+noremap <silent> <Leader>r :call CompileRun()<CR>
+func! CompileRun()
+    if &filetype == 'c'
+        exec "RunC"
+    elseif &filetype == 'cpp'
+        exec "RunCPP"
+    elseif &filetype == 'python'
+        exec "RunPython"
+    elseif &filetype == 'go'
+        exec "RunGO"
+    elseif &filetype == 'sh'
+        exec "RunBash"
+    endif
+endfunc
+
 """""""""""""""""""""
 " gcmt/wildfire.vim "
 """""""""""""""""""""
